@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app-depl
+  template:
+    metadata:
+      labels:
+        app: web-app-depl
+    spec:
+      containers:
+      - name: web-app-depl
+        image: web-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+          name: http
